@@ -147,15 +147,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `consumer` (
-       `id` integer not null,
-        `version` integer not null,
-        `user_account_id` integer,
-        `company` varchar(255),
-        `sector` varchar(255),
-        primary key (`id`)
-    ) engine=InnoDB;
-
     create table `descriptor` (
        `id` integer not null,
         `version` integer not null,
@@ -270,15 +261,6 @@
         `version` integer not null,
         `authenticated_id` integer,
         `messagethread_id` integer,
-        primary key (`id`)
-    ) engine=InnoDB;
-
-    create table `provider` (
-       `id` integer not null,
-        `version` integer not null,
-        `user_account_id` integer,
-        `company` varchar(255),
-        `sector` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -400,11 +382,6 @@
        foreign key (`sponsor_id`) 
        references `sponsor` (`id`);
 
-    alter table `consumer` 
-       add constraint FK_6cyha9f1wpj0dpbxrrjddrqed 
-       foreign key (`user_account_id`) 
-       references `user_account` (`id`);
-
     alter table `descriptor` 
        add constraint `FKgfulfilmwi4hhaquiu7fr5g0g` 
        foreign key (`job_id`) 
@@ -464,11 +441,6 @@
        add constraint `FKsyju38rbst3bgj3okjyo7ovly` 
        foreign key (`messagethread_id`) 
        references `messagethread` (`id`);
-
-    alter table `provider` 
-       add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd 
-       foreign key (`user_account_id`) 
-       references `user_account` (`id`);
 
     alter table `sponsor` 
        add constraint FK_20xk0ev32hlg96kqynl6laie2 

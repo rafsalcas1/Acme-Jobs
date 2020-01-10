@@ -17,27 +17,15 @@ import acme.framework.entities.Administrator;
 public class AdministratorComercialbannerController extends AbstractController<Administrator, Comercialbanner> {
 
 	@Autowired
-	private AdministratorComercialbannerListService		listService;
+	private AdministratorComercialbannerListService	listService;
 
 	@Autowired
-	private AdministratorComercialbannerShowService		showService;
-
-	@Autowired
-	private AdministratorComercialbannerCreateService	createService;
-
-	@Autowired
-	private AdministratorComercialbannerUpdateService	updateService;
-
-	@Autowired
-	private AdministratorComercialbannerDeleteService	deleteService;
+	private AdministratorComercialbannerShowService	showService;
 
 
 	@PostConstruct
 	private void initialise() {
 		super.addBasicCommand(BasicCommand.LIST, this.listService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
-		super.addBasicCommand(BasicCommand.CREATE, this.createService);
-		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);
-		super.addBasicCommand(BasicCommand.DELETE, this.deleteService);
 	}
 }

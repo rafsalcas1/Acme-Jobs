@@ -10,7 +10,7 @@
 - they accept any liabilities with respect to them.
 --%>
 
-<%@page language="java" import="acme.framework.helpers.PrincipalHelper,acme.entities.roles.Provider,acme.entities.roles.Consumer"%>
+<%@page language="java" import="acme.framework.helpers.PrincipalHelper"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
@@ -52,8 +52,6 @@
 			<acme:menu-suboption code="master.menu.administrator.dashboard.show" action="/administrator/dashboard/show" />	
 			<acme:menu-suboption code="master.menu.administrator.comercialbanner.list" action="/administrator/comercialbanner/list" />
 			<acme:menu-suboption code="master.menu.administrator.noncomercialbanner.list" action="/administrator/noncomercialbanner/list" />
-			<acme:menu-suboption code="master.menu.administrator.comercialbanner.create" action="/administrator/comercialbanner/create" />			
-			<acme:menu-suboption code="master.menu.administrator.noncomercialbanner.create" action="/administrator/noncomercialbanner/create" />
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.auditorRequest.list" action="/administrator/auditorrequest/list" />		
 			<acme:menu-suboption code="master.menu.administrator.announcement.list" action="/administrator/announcement/list"/>
@@ -76,13 +74,6 @@
 			<acme:menu-suboption code="master.menu.sponsor.noncomercialbanner.list" action="/sponsor/noncomercialbanner/list" />
 			<acme:menu-suboption code="master.menu.sponsor.noncomercialbanner.create" action="/sponsor/noncomercialbanner/create" />
 	    </acme:menu-option>
-	
-		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
-			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.provider.requestList" action="/provider/request/list"/>
-			<acme:menu-suboption code="master.menu.provider.requestCreate" action="/provider/request/create"/>
-		</acme:menu-option>
 
 	    <acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.list" action="/auditor/job/list_mine"/>
@@ -91,14 +82,6 @@
 			<acme:menu-suboption code="master.menu.auditor.list.mine" action="/auditor/auditrecord/list_mine"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.consumer.requestList" action="/authenticated/request/list"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.consumer.OfferList" action="/consumer/offers/list"/>
-			<acme:menu-suboption code="master.menu.consumer.OfferCreate" action="/consumer/offers/create"/>
-		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.employer" access="hasRole('Employer')">
 			<acme:menu-suboption code="master.menu.employer.jobList" action="/employer/job/list_mine"/>
@@ -122,10 +105,6 @@
 
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
-			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create" access="!hasRole('Provider')"/>
-			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
-			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
-			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-employer" action="/authenticated/employer/create" access="!hasRole('Employer')"/>
 			<acme:menu-suboption code="master.menu.user-account.employer" action="/authenticated/employer/update" access="hasRole('Employer')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-worker" action="/authenticated/worker/create" access="!hasRole('Worker')"/>

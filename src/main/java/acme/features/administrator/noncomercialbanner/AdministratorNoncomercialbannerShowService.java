@@ -36,7 +36,7 @@ public class AdministratorNoncomercialbannerShowService implements AbstractShowS
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "urlPicture", "slogan", "urlTarget", "jingle");
+		request.unbind(entity, model, "urlPicture", "slogan", "urlTarget", "jingle", "hasJingle");
 	}
 
 	@Override
