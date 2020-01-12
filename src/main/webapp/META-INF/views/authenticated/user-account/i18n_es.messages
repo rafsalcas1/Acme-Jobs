@@ -22,3 +22,4 @@ authenticated.user-account.form.button.update = Actualizar
 authenticated.user-account.form.button.return = Volver
 
 authenticated.user-account.form.error.confirmation-no-match = La confirmación de la contraseña no cuadra
+default.placeholder.phone = +001 (1234) 567-890 

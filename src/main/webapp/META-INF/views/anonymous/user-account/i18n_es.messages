@@ -25,3 +25,4 @@ anonymous.user-account.button.return = Volver
 anonymous.user-account.error.duplicated = Este apodo ya está siendo usado
 anonymous.user-account.error.must-accept = Debe aceptar la licencia
 anonymous.user-account.error.confirmation-no-match = La confirmación no cuadra
+default.placeholder.phone = +001 (1234) 567-890 

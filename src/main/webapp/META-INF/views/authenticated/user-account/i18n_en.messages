@@ -21,4 +21,6 @@ authenticated.user-account.form.label.phone = Phone:
 authenticated.user-account.form.button.update = Update
 authenticated.user-account.form.button.return = Return
 
-authenticated.user-account.form.error.confirmation-no-match = Password confirmation doesn't match 
+authenticated.user-account.form.error.confirmation-no-match = Password confirmation doesn't match
+
+default.placeholder.phone = +001 (1234) 567-890 
