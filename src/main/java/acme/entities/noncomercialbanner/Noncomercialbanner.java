@@ -3,6 +3,7 @@ package acme.entities.noncomercialbanner;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.URL;
@@ -36,5 +37,20 @@ public class Noncomercialbanner extends Banner {
 	@Valid
 	@ManyToOne(optional = true)
 	private Administrator		administrator;
+
+
+	// Derivated attributes -------------------------------------------------------------------
+
+	@Transient
+	public boolean getHasJingle() {
+		boolean res;
+
+		if (this.jingle == null) {
+			res = false;
+		} else {
+			res = true;
+		}
+		return res;
+	}
 
 }

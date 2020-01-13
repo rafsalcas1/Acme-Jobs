@@ -43,10 +43,6 @@
        drop 
        foreign key `FKii9iupedxt6hx534i7mm6wjhv`;
 
-    alter table `consumer` 
-       drop 
-       foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
-
     alter table `descriptor` 
        drop 
        foreign key `FKgfulfilmwi4hhaquiu7fr5g0g`;
@@ -95,10 +91,6 @@
        drop 
        foreign key `FKsyju38rbst3bgj3okjyo7ovly`;
 
-    alter table `provider` 
-       drop 
-       foreign key FK_b1gwnjqm6ggy9yuiqm0o4rlmd;
-
     alter table `sponsor` 
        drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
@@ -133,8 +125,6 @@
 
     drop table if exists `configuration`;
 
-    drop table if exists `consumer`;
-
     drop table if exists `descriptor`;
 
     drop table if exists `duty`;
@@ -156,8 +146,6 @@
     drop table if exists `participatein`;
 
     drop table if exists `participates`;
-
-    drop table if exists `provider`;
 
     drop table if exists `request`;
 
