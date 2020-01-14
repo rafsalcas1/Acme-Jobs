@@ -43,9 +43,7 @@ master.menu.anonymous.topinvestorsrecords.list= List of top investors records
 master.menu.authenticated= Authenticated
 master.menu.authenticated.announcement.list= List of announcements
 master.menu.authenticated.announcement.form= Create Announcement
-master.menu.authenticated.request.list = List of requests
 master.menu.authenticated.investorsrecord.list= List of investors records
-master.menu.authenticated.offer.list = List of offers
 master.menu.authenticated.challenge.list = List of challenges
 master.menu.authenticated.companyrecord.list= List of company records
 master.menu.authenticated.job.list = List of active jobs
@@ -65,9 +63,7 @@ master.menu.administrator.announcement.create = Create an announcement
 master.menu.administrator.investorsrecord.list= List of investors records
 master.menu.administrator.investorsrecord.create = Create an investor record
 master.menu.administrator.comercialbanner.list = List of comercial banners
-master.menu.administrator.comercialbanner.create = Create a comercial banner
 master.menu.administrator.noncomercialbanner.list = List of non comercial banners
-master.menu.administrator.noncomercialbanner.create = Create non comercial banner
 master.menu.administrator.challenge.list = List of challenges
 master.menu.administrator.challenge.create = Create a challenge
 master.menu.administrator.companyrecord.list = List of company records
@@ -83,27 +79,12 @@ master.menu.sponsor.comercialbanner.create = Create comercial banner
 master.menu.sponsor.noncomercialbanner.list = List of my non comercial banners
 master.menu.sponsor.noncomercialbanner.create = Create a non comercial banner
 
-# master.menu.provider ########################################################
-
-master.menu.provider = Provider
-master.menu.provider.favourite-link = Favourite link
-master.menu.provider.requestList = Request list
-master.menu.provider.requestCreate = Create a request
-
 # master.menu.auditor ########################################################
 
 master.menu.auditor = Auditor
 master.menu.auditor.list = List of job in which you are auditor
 master.menu.notauditor.list = List of job in which you are not auditor
 master.menu.auditor.list.mine = List of my audit records
-
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumer
-master.menu.consumer.favourite-link = Favourite link
-master.menu.consumer.requestList = Request list
-master.menu.consumer.OfferList = Offers list
-master.menu.consumer.OfferCreate = Create an offer
 
 # master.menu.employer ##########################################################
 
@@ -122,10 +103,6 @@ master.menu.worker.job.list = List of active jobs
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-master.menu.user-account.provider = Provider data
-master.menu.user-account.become-provider = Become a provider
-master.menu.user-account.consumer = Consumer data
-master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.become-employer = Become a employer
 master.menu.user-account.employer = Employer data
 master.menu.user-account.become-worker = Become a worker

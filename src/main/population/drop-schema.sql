@@ -141,13 +141,9 @@
 
     drop table if exists `noncomercialbanner`;
 
-    drop table if exists `offers`;
-
     drop table if exists `participatein`;
 
     drop table if exists `participates`;
-
-    drop table if exists `request`;
 
     drop table if exists `sponsor`;
 

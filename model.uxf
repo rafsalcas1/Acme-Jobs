@@ -369,25 +369,6 @@ has v</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>35</x>
-      <y>602</y>
-      <w>196</w>
-      <h>105</h>
-    </coordinates>
-    <panel_attributes>Offers
---
-+ title: String {NotBlank}
-+ moment: Date {Past,Temporal}
-+ deadline: Date {Past,Temporal}
-+ description: String {NotBlank}
-+ lowerRange: Money
-+ majorRange: Money
-+ ticker: String {NotBlank,Column,Pattern}</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>112</x>
       <y>462</y>
       <w>154</w>
@@ -425,27 +406,8 @@ has v</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>245</x>
-      <y>602</y>
-      <w>189</w>
-      <h>105</h>
-    </coordinates>
-    <panel_attributes>Request
---
-+ title: String {NotBlank}
-+ moment: Date {Past,Temporal}
-+ deadline: Date {Past,Temporal}
-+ description: String {NotBlank}
-+ reward: Money
-+ ticker: String {NotBlank,Column,Pattern}
-/ cifra: Integer {Min}</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>126</x>
-      <y>714</y>
+      <y>602</y>
       <w>245</w>
       <h>308</h>
     </coordinates>
