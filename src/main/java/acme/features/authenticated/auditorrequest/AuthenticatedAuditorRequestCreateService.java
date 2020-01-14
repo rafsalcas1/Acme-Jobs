@@ -1,6 +1,7 @@
 
 package acme.features.authenticated.auditorrequest;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -101,7 +102,11 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		id = principal.getAccountId();
 		user = this.repository.findOneUserAccountById(id);
 
-		requests = this.repository.allRequestByUserAccountId(user.getId());
+		if (this.repository.allRequestByUserAccountId(user.getId()) == null) {
+			requests = new ArrayList<Auditorrequest>();
+		} else {
+			requests = this.repository.allRequestByUserAccountId(user.getId());
+		}
 
 		canRequest = requests.isEmpty();
 		errors.state(request, canRequest, "firm", "authenticated.auditorrequest.error.cannot-request");
