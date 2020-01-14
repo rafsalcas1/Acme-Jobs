@@ -620,7 +620,7 @@
 	
 	<bean id="application1" class="acme.entities.application.Application">
 		<property name="reference" value="EMPA-JOBA:AAAA"/>
-		<property name="moment" value="2019/12/11 23:59"/>
+		<property name="moment" value="2020/01/11 23:59"/>
 		<property name="status" value="pending"/>
 		<property name="statement" value="A statement"/>
 		<property name="skills" value="very good in Python"/>
@@ -631,7 +631,7 @@
 	
 	<bean id="application2" class="acme.entities.application.Application">
 		<property name="reference" value="EMPB-JOBA:AAAA"/>
-		<property name="moment" value="2019/12/16 23:59"/>
+		<property name="moment" value="2020/01/13 23:59"/>
 		<property name="status" value="rejected"/>
 		<property name="statement" value="A statement"/>
 		<property name="skills" value="good marks in the career"/>
@@ -642,7 +642,7 @@
 	
 	<bean id="application3" class="acme.entities.application.Application">
 		<property name="reference" value="EMPA-JOBB:AAAB"/>
-		<property name="moment" value="2019/12/17 12:12"/>
+		<property name="moment" value="2020/01/09 12:12"/>
 		<property name="status" value="accepted"/>
 		<property name="statement" value="A statement"/>
 		<property name="skills" value="very good in neural networks"/>
@@ -653,7 +653,7 @@
 	
 	<bean id="application4" class="acme.entities.application.Application">
 		<property name="reference" value="EMPB-JOBB:AAAB"/>
-		<property name="moment" value="2019/12/15 13:59"/>
+		<property name="moment" value="2020/01/12 13:59"/>
 		<property name="status" value="rejected"/>
 		<property name="statement" value="A statement"/>
 		<property name="skills" value="very good in neural networks"/>

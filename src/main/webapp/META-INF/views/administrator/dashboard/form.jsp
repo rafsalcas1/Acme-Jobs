@@ -16,7 +16,7 @@
 				<!--	Chart of companies  -->	
 
 	<h2><acme:message code="administrator.dashboard.form.title.chartCompanys"/></h2>
-	<div><canvas id="canvas"></canvas></div>
+	<div ><canvas id="canvas" height="75"></canvas></div>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var data = {
@@ -42,6 +42,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
@@ -72,7 +75,7 @@
 	<!--	Chart of Inverstors  -->	
 	
 	<h2><acme:message code="administrator.dashboard.form.title.chartInverstors"/></h2>
-	<div><canvas id="canvas2"></canvas></div>
+	<div><canvas id="canvas2" height="75"></canvas></div>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var data = {
@@ -98,6 +101,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
@@ -130,7 +136,7 @@
 	<!--	Chart of Jobs  -->	
 	
 	<h2><acme:message code="administrator.dashboard.form.title.chartJobs"/></h2>
-	<div><canvas id="canvas3"></canvas></div>
+	<div><canvas id="canvas3" height="75"></canvas></div>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -153,6 +159,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
@@ -186,7 +195,7 @@
 				<!--	Chart of Applications  -->	
 
 	<h2><acme:message code="administrator.dashboard.form.title.chartApplications"/></h2>
-	<div><canvas id="canvas4"></canvas></div>
+	<div><canvas id="canvas4" height="75"></canvas></div>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var data = {
@@ -212,6 +221,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
@@ -244,7 +256,7 @@
 	<!--	Chart of pending applications per day  -->	
 
 	<h2><acme:message code="administrator.dashboard.form.title.applicationPendingPerDay"/></h2>
-	<div><canvas id="canvas5"></canvas></div>
+	<div><canvas id="canvas5" height="75"></canvas></div>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -272,6 +284,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
@@ -302,7 +317,7 @@
 	<!--	Chart of accepted applications per day  -->	
 	
 	<h2><acme:message code="administrator.dashboard.form.title.applicationAcceptedPerDay"/></h2>
-	<div><canvas id="canvas6"></canvas></div>
+	<div><canvas id="canvas6" height="75"></canvas></div>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -330,6 +345,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
@@ -361,7 +379,7 @@
 		<!--	Chart of rejected applications per day  -->	
 	
 	<h2><acme:message code="administrator.dashboard.form.title.applicationRejectedPerDay"/></h2>
-	<div><canvas id="canvas7"></canvas></div>
+	<div><canvas id="canvas7" height="75"></canvas></div>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -389,6 +407,9 @@
 	};
 	
 	var options =	{
+			responsive: true,
+			maintainAspectRatio: true,
+			showScale: false,
 			scales	:	{
 				yAxes	:	[
 					{
