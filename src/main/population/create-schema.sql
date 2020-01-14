@@ -233,21 +233,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `offers` (
-       `id` integer not null,
-        `version` integer not null,
-        `deadline` datetime(6),
-        `description` varchar(1024),
-        `lower_range_amount` double precision,
-        `lower_range_currency` varchar(255),
-        `major_range_amount` double precision,
-        `major_range_currency` varchar(255),
-        `moment` datetime(6),
-        `ticker` varchar(255),
-        `title` varchar(255),
-        primary key (`id`)
-    ) engine=InnoDB;
-
     create table `participatein` (
        `id` integer not null,
         `version` integer not null,
@@ -261,19 +246,6 @@
         `version` integer not null,
         `authenticated_id` integer,
         `messagethread_id` integer,
-        primary key (`id`)
-    ) engine=InnoDB;
-
-    create table `request` (
-       `id` integer not null,
-        `version` integer not null,
-        `dead_line` datetime(6),
-        `description` varchar(1024),
-        `moment` datetime(6),
-        `reward_amount` double precision,
-        `reward_currency` varchar(255),
-        `ticker` varchar(255),
-        `title` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -320,12 +292,6 @@
 
     alter table `job` 
        add constraint UK_7jmfdvs0b0jx7i33qxgv22h7b unique (`reference`);
-
-    alter table `offers` 
-       add constraint UK_7680whff1koitvyrrekdt6h8l unique (`ticker`);
-
-    alter table `request` 
-       add constraint UK_9mxq3powq8tqctclj0fbi2nih unique (`ticker`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);

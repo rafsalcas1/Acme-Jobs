@@ -21,14 +21,14 @@
 	<!-- Announcements -->
 	<bean id="announcement01" class="acme.entities.announcements.Announcement">
 		<property name="title" value="Sample announcement 01"/>
-		<property name="moment" value="2019/06/10 10:35"/>
+		<property name="moment" value="2020/01/14 10:35"/>
 		<property name="moreInfo"><null/></property>
 		<property name="text" value="This is the description of a sample announcement"/>
 	</bean>
 
 	<bean id="announcement02" class="acme.entities.announcements.Announcement">
 		<property name="title" value="Sample announcement 02"/>
-		<property name="moment" value="2019/06/10 00:00"/>
+		<property name="moment" value="2020/01/14 00:00"/>
 		<property name="moreInfo" value="http://www.example.com"/>
 		<property name="text" value="This is the description of another announcement"/>
 	</bean>
@@ -41,49 +41,11 @@
 
 		<bean id="announcement04" class="acme.entities.announcements.Announcement">
 		<property name="title" value="Sample announcement 04"/>
-		<property name="moment" value="2019/11/01 00:00"/>
+		<property name="moment" value="2020/01/14 00:00"/>
 		<property name="moreInfo" value="http://www.example.com"/>
 		<property name="text" value="This is the description of an announcement"/>
 	</bean>
 
-	
-	
-	<!-- Requests -->
-	<bean id="request01" class="acme.entities.request.Request">
-		<property name="title" value="Sample request 01"/>
-		<property name="moment" value="2019/05/10 10:35"/>
-		<property name="deadLine" value="2019/07/10 12:35"/>
-		<property name="description" value="This is the description of a sample request"/>
-		<property name="reward" value="200€"/>
-		<property name="ticker" value="RABCD-00001"/>
-	</bean>
-
-	<bean id="request02" class="acme.entities.request.Request">
-		<property name="title" value="Sample request 01"/>
-		<property name="moment" value="2018/05/10 10:35"/>
-		<property name="deadLine" value="2018/07/10 12:35"/>
-		<property name="description" value="This is the description of a the second request"/>
-		<property name="reward" value="2000€"/>
-		<property name="ticker" value="RABCD-00002"/>
-	</bean>
-	
-	<bean id="request03" class="acme.entities.request.Request">
-		<property name="title" value="Sample request 01"/>
-		<property name="moment" value="2017/05/10 10:35"/>
-		<property name="deadLine" value="2017/07/10 12:35"/>
-		<property name="description" value="This is the description of the third request"/>
-		<property name="reward" value="1200€"/>
-		<property name="ticker" value="RAbcD-00003"/>
-	</bean>
-	
-	<bean id="request04" class="acme.entities.request.Request">
-		<property name="title" value="Sample request 04"/>
-		<property name="moment" value="2019/11/01 10:35"/>
-		<property name="deadLine" value="2020/07/10 12:35"/>
-		<property name="description" value="This is the description of the another request"/>
-		<property name="reward" value="20123€"/>
-		<property name="ticker" value="RABCD-00004"/>
-	</bean>
 	<!-- Company records -->
 	
 	<bean id="companyrecord01" class="acme.entities.companyrecords.Companyrecord">
@@ -172,37 +134,6 @@
 		<property name="sector" value="Trading"/>
 		<property name="statement" value="This is a good example of a statement"/>
 		<property name="numberStars" value="5"/>
-	</bean>
-	
-	<!-- Offers -->
-	<bean id="offer01" class="acme.entities.offers.Offers">
-		<property name="title" value="Sample offer 01"/>
-		<property name="moment" value="2019/05/10 10:35"/>
-		<property name="deadline" value="2024/07/10 12:35"/>
-		<property name="description" value="This is the description of a sample offer"/>
-		<property name="lowerRange" value="100€"/>
-		<property name="majorRange" value="200€"/>
-		<property name="ticker" value="OABCD-00001"/>
-	</bean>
-	
-	<bean id="offer02" class="acme.entities.offers.Offers">
-		<property name="title" value="Sample offer 02"/>
-		<property name="moment" value="2019/05/10 10:35"/>
-		<property name="deadline" value="2020/07/10 12:35"/>
-		<property name="description" value="This is the description of the second sample offer"/>
-		<property name="lowerRange" value="200€"/>
-		<property name="majorRange" value="300€"/>
-		<property name="ticker" value="OABCD-00002"/>
-	</bean>
-	
-	<bean id="offer03" class="acme.entities.offers.Offers">
-		<property name="title" value="Sample offer 03"/>
-		<property name="moment" value="2019/05/10 10:35"/>
-		<property name="deadline" value="2019/07/10 12:35"/>
-		<property name="description" value="This is the description of the third sample offer"/>
-		<property name="lowerRange" value="100€"/>
-		<property name="majorRange" value="200€"/>
-		<property name="ticker" value="OABCD-00003"/>
 	</bean>
 	
 	<!-- Challenge -->

@@ -23,14 +23,6 @@ public class Dashboard implements Serializable {
 
 	private Integer				totalCompanyRecords;
 
-	private Double				minRewardRequest;
-
-	private Double				maxRewardRequest;
-
-	private Double				minRewardOffers;
-
-	private Double				maxRewardOffers;
-
 	private List<Integer>		companysBySector;
 
 	private List<String>		sectorsOfCompanys;
@@ -38,14 +30,6 @@ public class Dashboard implements Serializable {
 	private List<Integer>		inverstorsBySector;
 
 	private List<String>		sectorsOfInverstors;
-
-	private Double				mediaRequest;
-
-	private Double				stdevRequest;
-
-	private Double				mediaOffer;
-
-	private Double				stdevOffer;
 
 	private List<Double>		jobsByFinalMode;
 

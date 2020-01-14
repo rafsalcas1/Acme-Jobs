@@ -7,17 +7,9 @@
 	<acme:form-integer code="administrator.dashboard.form.label.totalAnnouncement" path="totalAnnouncement" />
 	<acme:form-integer code="administrator.dashboard.form.label.totalInvestorsRecord" path="totalInvestorsRecord" />	
 	<acme:form-integer code="administrator.dashboard.form.label.totalCompanyRecords" path="totalCompanyRecords" />
-	<acme:form-double code="administrator.dashboard.form.label.minRewardRequest" path="minRewardRequest" />
-	<acme:form-double code="administrator.dashboard.form.label.maxRewardRequest" path="maxRewardRequest" />	
-	<acme:form-double code="administrator.dashboard.form.label.minRewardOffers" path="minRewardOffers" />
-	<acme:form-double code="administrator.dashboard.form.label.maxRewardOffers" path="maxRewardOffers"/>
-	<acme:form-double code="administrator.dashboard.form.label.mediaRequest" path="mediaRequest"/>
-	<acme:form-double code="administrator.dashboard.form.label.mediaOffer" path="mediaOffer"/>
-	<acme:form-double code="administrator.dashboard.form.label.stdevRequest" path="stdevRequest"/>
-	<acme:form-double code="administrator.dashboard.form.label.stdevOffer" path="stdevOffer"/>
 	<acme:form-double code="administrator.dashboard.form.label.mediaJobsEmployer" path="avgJobEmployer"/>
 	<acme:form-double code="administrator.dashboard.form.label.mediaApplicationWorker" path="avgApplicationWorker"/>
-	 <acme:form-double code="administrator.dashboard.form.label.mediaApplicationEmployer" path="avgApplicationEmployer"/>
+	<acme:form-double code="administrator.dashboard.form.label.mediaApplicationEmployer" path="avgApplicationEmployer"/>
 	
 </acme:form>
 
