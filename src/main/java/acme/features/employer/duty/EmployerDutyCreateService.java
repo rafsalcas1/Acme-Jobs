@@ -1,8 +1,6 @@
 
 package acme.features.employer.duty;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -133,29 +131,6 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 			if (hasPercentage) {
 				isPercentage = entity.getPercentage() >= 0 && entity.getPercentage() <= 100;
 				errors.state(request, isPercentage, "percentage", "employer.duty.error.must-be-a-percentage");
-
-				if (isPercentage) {
-					percentageSumLess100 = true;
-					Collection<Duty> allDutys;
-					int descriptorId;
-					Double sum = 0.;
-
-					descriptorId = entity.getDescriptor().getId();
-
-					allDutys = this.repository.findManyByDescriptorId(descriptorId);
-
-					for (Duty d : allDutys) {
-						sum += d.getPercentage();
-					}
-					sum += entity.getPercentage();
-
-					if (sum > 100) {
-						percentageSumLess100 = false;
-					}
-
-					errors.state(request, percentageSumLess100, "percentage", "employer.duty.error.must-be-less-or-equal-than-101");
-
-				}
 			}
 		}
 	}

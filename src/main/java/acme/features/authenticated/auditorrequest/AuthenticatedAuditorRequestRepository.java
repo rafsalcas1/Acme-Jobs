@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedAuditorRequestRepository extends AbstractRepository {
 
-	@Query("select u from Authenticated u where u.id=?1")
+	@Query("select u from Authenticated u where u.userAccount.id=?1")
 	Authenticated findOneUserAccountById(int id);
 
 	@Query("select ar from Auditorrequest ar where ar.user.id=?1 and ar.status='pending'")

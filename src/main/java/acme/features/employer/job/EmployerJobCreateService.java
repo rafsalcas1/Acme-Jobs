@@ -146,7 +146,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		}
 
 		// Validation reference ----------------------------------------------------------------------------------------------------------
-		if (!errors.hasErrors("title")) {
+		if (!errors.hasErrors("reference")) {
 			hasReference = entity.getReference() != null;
 			errors.state(request, hasReference, "reference", "employer.job.error.must-have-reference");
 			if (hasReference) {
