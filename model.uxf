@@ -409,25 +409,17 @@ has v</panel_attributes>
       <x>126</x>
       <y>602</y>
       <w>245</w>
-      <h>308</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>Dashboard
 --
 / totalAnnouncement: Integer
 / totalInvestorsRecord: Integer
 / totalCompanyRecords: Integer
-/ minRewardRequest: Double
-/ maxRewardRequest: Double
-/ minRewardOffers: Double
-/ maxRewardOffers: Double
 / companysBySector: List&lt;Integer&gt;
 / sectorsOfCompanys: List&lt;String&gt;
 / inverstorsBySector: List&lt;Integer&gt;	
 / sectorsOfInverstors: List&lt;String&gt;	
-/ mediaRequest: Double
-/ stdevRequest: Double
-/ mediaOffer: Double
-/ stdevOffer: Double
 / jobsByFinalMode: List&lt;Double&gt;
 / statusOfApplication: List&lt;String&gt;
 / applicaitonByStatus: List&lt;Double&gt;
