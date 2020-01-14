@@ -257,9 +257,9 @@
 	
 	<!-- Comercial Banner -->
 	<bean id="comercialBanner01" class="acme.entities.comercialbanner.Comercialbanner">
-		<property name="urlPicture" value="http://www.almaromerita.es/img/mi-tienda-logo-1535397747.jpg"/>
-		<property name="slogan" value="buy our's product!"/>
-		<property name="urlTarget" value="http://www.almaromerita.es/"/>
+		<property name="urlPicture" value="https://i.imgur.com/8YcXhS0.png"/>
+		<property name="slogan" value="Become the hero that the world deserves!"/>
+		<property name="urlTarget" value="https://i.imgur.com/8YcXhS0.png"/>
 		<property name="finalMode" value="true"/>
 		<property name="sponsor" ref="sponsor1Sponsor"/>
 		<property name="creditNumber" value="4539346795312635"/>
@@ -271,10 +271,52 @@
 	</bean>
 	
 	<bean id="comercialBanner02" class="acme.entities.comercialbanner.Comercialbanner">
-		<property name="urlPicture" value="http://www.dulcesgarpe.com/wp-content/uploads/2015/01/logo.png"/>
-		<property name="slogan" value="best sweets of the world!"/>
+		<property name="urlPicture" value="https://i.imgur.com/NGLSjk6.png"/>
+		<property name="slogan" value="change the world!"/>
 		<property name="finalMode" value="true"/>
-		<property name="urlTarget" value="http://dulcesgarpe.com/tienda/"/>
+		<property name="urlTarget" value="https://i.imgur.com/NGLSjk6.png"/>
+		<property name="sponsor" ref="sponsor1Sponsor"/>
+		<property name="creditNumber" value="4539346795312635"/>
+		<property name="name" value="sponsor1"/>
+		<property name="surname" value="sponsor1"/>
+		<property name="expiration" value="2024/12/12 12:12"/>
+		<property name="securityCode" value="836"/>
+		<property name="type" value="Visa"/>
+	</bean>
+	
+	<bean id="comercialBanner03" class="acme.entities.comercialbanner.Comercialbanner">
+		<property name="urlPicture" value="https://i.imgur.com/2eVF1HG.png"/>
+		<property name="slogan" value="afropodei"/>
+		<property name="finalMode" value="true"/>
+		<property name="urlTarget" value="https://i.imgur.com/2eVF1HG.png"/>
+		<property name="sponsor" ref="sponsor1Sponsor"/>
+		<property name="creditNumber" value="4539346795312635"/>
+		<property name="name" value="sponsor1"/>
+		<property name="surname" value="sponsor1"/>
+		<property name="expiration" value="2024/12/12 12:12"/>
+		<property name="securityCode" value="836"/>
+		<property name="type" value="Visa"/>
+	</bean>
+	
+	<bean id="comercialBanner04" class="acme.entities.comercialbanner.Comercialbanner">
+		<property name="urlPicture" value="https://i.imgur.com/fihihcF.png"/>
+		<property name="slogan" value="El gancho"/>
+		<property name="finalMode" value="true"/>
+		<property name="urlTarget" value="https://i.imgur.com/fihihcF.png"/>
+		<property name="sponsor" ref="sponsor1Sponsor"/>
+		<property name="creditNumber" value="4539346795312635"/>
+		<property name="name" value="sponsor1"/>
+		<property name="surname" value="sponsor1"/>
+		<property name="expiration" value="2024/12/12 12:12"/>
+		<property name="securityCode" value="836"/>
+		<property name="type" value="Visa"/>
+	</bean>
+	
+	<bean id="comercialBanner05" class="acme.entities.comercialbanner.Comercialbanner">
+		<property name="urlPicture" value="https://i.imgur.com/MtBRoNP.png"/>
+		<property name="slogan" value="Medicines sans frontiers"/>
+		<property name="finalMode" value="true"/>
+		<property name="urlTarget" value="https://i.imgur.com/MtBRoNP.png"/>
 		<property name="sponsor" ref="sponsor1Sponsor"/>
 		<property name="creditNumber" value="4539346795312635"/>
 		<property name="name" value="sponsor1"/>
