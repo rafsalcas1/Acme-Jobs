@@ -1,7 +1,6 @@
 
 package acme.features.worker.application;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,10 +93,8 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert errors != null;
 
-		boolean hasReference, isDuplicated, hasStatus, hasSkills, hasStatement, hasQualifications, alreadyApplicated;
+		boolean hasReference, isDuplicated, hasStatus, hasSkills, hasStatement, hasQualifications;
 		boolean hasSpamSkills, hasSpamStatement, hasSpamQualifications;
-		Integer id;
-		Principal principal;
 		String spamWords;
 		Double spamThreshold;
 		Configuration configuration;
@@ -105,71 +102,55 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		configuration = this.confRepository.findConfiguration();
 		spamWords = configuration.getSpamWords();
 		spamThreshold = configuration.getSpamThreshold();
-		Collection<Application> result;
-		principal = request.getPrincipal();
-		id = request.getModel().getInteger("jobId");
-		result = this.repository.findManyByJobId(id);
 
-		alreadyApplicated = true;
-
-		for (Application a : result) {
-			if (a.getWorker().getId() == principal.getActiveRoleId()) {
-				alreadyApplicated = false;
-				break;
+		if (!errors.hasErrors("reference")) {
+			hasReference = entity.getReference() != null;
+			errors.state(request, hasReference, "reference", "worker.application.error.must-have-reference");
+			if (hasReference) {
+				isDuplicated = this.repository.findOneByReference(entity.getReference()) != null;
+				errors.state(request, !isDuplicated, "reference", "worker.application.error.must-be-unique");
 			}
 
 		}
-
-		errors.state(request, alreadyApplicated, "reference", "worker.application.error.had-applicated");
-		if (alreadyApplicated) {
-			if (!errors.hasErrors("reference")) {
-				hasReference = entity.getReference() != null;
-				errors.state(request, hasReference, "reference", "worker.application.error.must-have-reference");
-				if (hasReference) {
-					isDuplicated = this.repository.findOneByReference(entity.getReference()) != null;
-					errors.state(request, !isDuplicated, "reference", "worker.application.error.must-be-unique");
-				}
+		if (!errors.hasErrors("status")) {
+			hasStatus = entity.getStatus() != null;
+			errors.state(request, hasStatus, "status", "worker.application.error.must-have-status");
+			if (hasStatus) {
+				boolean pending = entity.getStatus().equals("pending");
+				errors.state(request, pending, "status", "worker.application.error.must-be-pending");
 			}
-			if (!errors.hasErrors("status")) {
-				hasStatus = entity.getStatus() != null;
-				errors.state(request, hasStatus, "status", "worker.application.error.must-have-status");
-				if (hasStatus) {
-					boolean pending = entity.getStatus().equals("pending");
-					errors.state(request, pending, "status", "worker.application.error.must-be-pending");
-				}
+		}
+
+		boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
+		errors.state(request, ErrorPattern, "status", "worker.application.error.pattern-status");
+
+		if (!errors.hasErrors("skills")) {
+			hasSkills = entity.getSkills() != null;
+			errors.state(request, hasSkills, "skills", "worker.application.error.must-have-skills");
+
+			if (hasSkills) {
+				hasSpamSkills = Spamfilter.spamThreshold(entity.getSkills(), spamWords, spamThreshold);
+				errors.state(request, !hasSpamSkills, "skills", "worker.application.error.must-not-have-spam-skills");
 			}
+		}
 
-			boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
-			errors.state(request, ErrorPattern, "status", "worker.application.error.pattern-status");
+		if (!errors.hasErrors("statement")) {
+			hasStatement = entity.getStatement() != null;
+			errors.state(request, hasStatement, "statement", "worker.application.error.must-have-statement");
 
-			if (!errors.hasErrors("skills")) {
-				hasSkills = entity.getSkills() != null;
-				errors.state(request, hasSkills, "skills", "worker.application.error.must-have-skills");
-
-				if (hasSkills) {
-					hasSpamSkills = Spamfilter.spamThreshold(entity.getSkills(), spamWords, spamThreshold);
-					errors.state(request, !hasSpamSkills, "skills", "worker.application.error.must-not-have-spam-skills");
-				}
+			if (hasStatement) {
+				hasSpamStatement = Spamfilter.spamThreshold(entity.getStatement(), spamWords, spamThreshold);
+				errors.state(request, !hasSpamStatement, "statement", "worker.application.error.must-not-have-spam-statement");
 			}
+		}
 
-			if (!errors.hasErrors("statement")) {
-				hasStatement = entity.getStatement() != null;
-				errors.state(request, hasStatement, "statement", "worker.application.error.must-have-statement");
+		if (!errors.hasErrors("qualifications")) {
+			hasQualifications = entity.getQualifications() != null;
+			errors.state(request, hasQualifications, "qualifications", "worker.application.error.must-have-qualifications");
 
-				if (hasStatement) {
-					hasSpamStatement = Spamfilter.spamThreshold(entity.getStatement(), spamWords, spamThreshold);
-					errors.state(request, !hasSpamStatement, "statement", "worker.application.error.must-not-have-spam-statement");
-				}
-			}
-
-			if (!errors.hasErrors("qualifications")) {
-				hasQualifications = entity.getQualifications() != null;
-				errors.state(request, hasQualifications, "qualifications", "worker.application.error.must-have-qualifications");
-
-				if (hasQualifications) {
-					hasSpamQualifications = Spamfilter.spamThreshold(entity.getQualifications(), spamWords, spamThreshold);
-					errors.state(request, !hasSpamQualifications, "qualifications", "worker.application.error.must-not-have-spam-qualifications");
-				}
+			if (hasQualifications) {
+				hasSpamQualifications = Spamfilter.spamThreshold(entity.getQualifications(), spamWords, spamThreshold);
+				errors.state(request, !hasSpamQualifications, "qualifications", "worker.application.error.must-not-have-spam-qualifications");
 			}
 		}
 	}
