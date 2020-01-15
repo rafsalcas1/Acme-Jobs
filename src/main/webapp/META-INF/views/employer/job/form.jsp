@@ -66,7 +66,7 @@
 	
 	<acme:form-submit test="${command == 'show' && finalMode == false}" code="employer.job.form.button.update" action="/employer/job/update"/>
 	<acme:form-submit test="${command == 'update'}" code="employer.job.form.button.update" action="/employer/job/update"/>
-	
+	<acme:form-submit test ="${command == 'update'}" code="employer.job.form.button.delete" action="/employer/job/delete"/>
 	
 	<jstl:if test="${hasApplication == false}">
 	<acme:form-submit test ="${command != 'create'}" code="employer.job.form.button.delete" action="/employer/job/delete"/>

@@ -14,8 +14,11 @@
 	<jstl:set var="id" value="${id}"/>
 	<h4><acme:menu-suboption code="employer.descriptor.form.label.duties" action="/employer/duty/list?idDescriptor=${id}&fm=${param.fm}"/></h4>
 	
+	<jstl:if test="${jobFinalMode == false}">
 	<acme:form-submit test="${command == 'show'}" code="employer.descriptor.form.button.update" action="/employer/descriptor/update"/>
+	</jstl:if>
 	<acme:form-submit test="${command == 'update'}" code="employer.descriptor.form.button.update" action="/employer/descriptor/update"/>
+	
 	<acme:form-return code="employer.descriptor.form.label.button.return"/>
 
 </acme:form>

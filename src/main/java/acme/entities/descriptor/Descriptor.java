@@ -42,4 +42,9 @@ public class Descriptor extends DomainEntity {
 		return this.job.getId();
 	}
 
+	@Transient
+	public Boolean getJobFinalMode() {
+		return this.job.isFinalMode();
+	}
+
 }

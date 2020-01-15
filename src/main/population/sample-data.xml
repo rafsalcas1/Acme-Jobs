@@ -708,7 +708,7 @@
     
     	<!-- Audit records -->
 	
-	<bean id="auditrecord2" class="acme.entities.auditrecord.Auditrecord">
+	<bean id="auditrecord1" class="acme.entities.auditrecord.Auditrecord">
 		<property name="title" value="Audit record 2"/>
 		<property name="isFinalMode" value="false"/>
 		<property name="moment" value="2018/12/10 17:00"/>
@@ -716,7 +716,7 @@
 		<property name="job" ref="job4"/>
 		<property name="auditor" ref="auditor2Auditor"/>
 	</bean>
-	<bean id="auditrecord3" class="acme.entities.auditrecord.Auditrecord">
+	<bean id="auditrecord2" class="acme.entities.auditrecord.Auditrecord">
 		<property name="title" value="Audit record 3"/>
 		<property name="isFinalMode" value="true"/>
 		<property name="moment" value="2019/11/29 17:00"/>
@@ -726,7 +726,7 @@
 	</bean>
 	
 	
-	<bean id="auditrecord5" class="acme.entities.auditrecord.Auditrecord">
+	<bean id="auditrecord3" class="acme.entities.auditrecord.Auditrecord">
 		<property name="title" value="Audit record 5"/>
 		<property name="isFinalMode" value="false"/>
 		<property name="moment" value="2018/11/30 19:00"/>
@@ -734,17 +734,8 @@
 		<property name="job" ref="job1"/>
 		<property name="auditor" ref="auditor1Auditor"/>
 	</bean>
-	 
-	<bean id="auditrecord6" class="acme.entities.auditrecord.Auditrecord">
-		<property name="title" value="Audit record 6"/>
-		<property name="isFinalMode" value="false"/>
-		<property name="moment" value="2018/11/30 19:00"/>
-		<property name="body" value="Example of audit record 6"/>
-		<property name="job" ref="job1"/>
-		<property name="auditor" ref="auditor2Auditor"/>
-	</bean>
 	
-	<bean id="auditrecord7" class="acme.entities.auditrecord.Auditrecord">
+	<bean id="auditrecord4" class="acme.entities.auditrecord.Auditrecord">
 		<property name="title" value="Audit record 7"/>
 		<property name="isFinalMode" value="true"/>
 		<property name="moment" value="2018/11/30 19:00"/>
@@ -756,24 +747,21 @@
 		<!-- Participate in -->
 	
 	
-	<bean id="participatein02" class="acme.entities.participatein.Participatein">
+	<bean id="participatein01" class="acme.entities.participatein.Participatein">
 		<property name="job" ref="job4"/>
 		<property name="auditor" ref="auditor2Auditor"/>
 	</bean>
-	<bean id="participatein03" class="acme.entities.participatein.Participatein">
+	<bean id="participatein02" class="acme.entities.participatein.Participatein">
 		<property name="job" ref="job2"/>
 		<property name="auditor" ref="auditor1Auditor"/>
 	</bean>
 	
-	<bean id="participatein05" class="acme.entities.participatein.Participatein">
+	<bean id="participatein03" class="acme.entities.participatein.Participatein">
 		<property name="job" ref="job1"/>
 		<property name="auditor" ref="auditor1Auditor"/>
 	</bean>
-	<bean id="participatein06" class="acme.entities.participatein.Participatein">
-		<property name="job" ref="job1"/>
-		<property name="auditor" ref="auditor2Auditor"/>
-	</bean>
-	<bean id="participatein07" class="acme.entities.participatein.Participatein">
+	
+	<bean id="participatein04" class="acme.entities.participatein.Participatein">
 		<property name="job" ref="job5"/>
 		<property name="auditor" ref="auditor2Auditor"/>
 	</bean>

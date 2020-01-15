@@ -32,15 +32,17 @@ public class EmployerDescriptorUpdateService implements AbstractUpdateService<Em
 		Descriptor descriptor;
 		Principal principal;
 		int idPrincipal, id;
-		boolean res;
+		boolean owner, publish, res;
 
 		principal = request.getPrincipal();
 		idPrincipal = principal.getAccountId();
 		id = request.getModel().getInteger("id");
 		descriptor = this.repository.findOneById(id);
 
-		res = idPrincipal == descriptor.getJob().getEmployer().getUserAccount().getId();
+		publish = descriptor.getJob().isFinalMode();
+		owner = idPrincipal == descriptor.getJob().getEmployer().getUserAccount().getId();
 
+		res = owner && !publish;
 		return res;
 	}
 
@@ -60,7 +62,7 @@ public class EmployerDescriptorUpdateService implements AbstractUpdateService<Em
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "description");
+		request.unbind(entity, model, "description", "jobFinalMode");
 
 	}
 
