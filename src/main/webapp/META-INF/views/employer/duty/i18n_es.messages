@@ -19,6 +19,6 @@ employer.duty.error.must-have-description= Debe tener una descripción
 employer.duty.error.must-have-title = La tarea debe ded tener un título
 employer.duty.error.must-not-have-title-spam = El título de la tarea no puede contener spam
 employer.duty.error.must-not-have-percentage = La tarea debe de tener un porcentaje
-employer.duty.error.must-be-a-percentage = El valor del porcentaje debe estar entre 0% y 100%
+employer.duty.error.must-be-a-percentage = El valor del porcentaje debe ser mayor que 0%
 employer.duty.error.must-be-less-or-equal-than-101 = La suma del porcentaje de todos los duties no puede ser superior al 100%
 
