@@ -816,6 +816,7 @@
 		<property name="status" value="pending"/>
 		<property name="user" ref="worker1Authenticated"/>
 		<property name="moment" value="2019/12/12 12:12"/>
+		<property name="auditorInDatabase" value="false"/>
 	</bean>
 	
 	<bean id="auditorRequest2" class="acme.entities.auditorrequest.Auditorrequest">
@@ -825,6 +826,7 @@
 		<property name="status" value="rejected"/>
 		<property name="user" ref="worker2Authenticated"/>
 		<property name="moment" value="2019/12/11 12:12"/>
+		<property name="auditorInDatabase" value="false"/>
 	</bean>
 	
 	

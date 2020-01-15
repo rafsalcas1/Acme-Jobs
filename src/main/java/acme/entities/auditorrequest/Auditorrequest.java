@@ -46,6 +46,8 @@ public class Auditorrequest extends DomainEntity {
 	@NotNull
 	private Date				moment;
 
+	private boolean				auditorInDatabase;
+
 	//RelationShips
 
 	@Valid
