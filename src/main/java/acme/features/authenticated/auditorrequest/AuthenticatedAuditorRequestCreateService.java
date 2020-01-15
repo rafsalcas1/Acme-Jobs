@@ -37,15 +37,10 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 	public boolean authorise(final Request<Auditorrequest> request) {
 		assert request != null;
 		Principal principal;
-		Integer id;
-		Auditor auditor;
 
 		principal = request.getPrincipal();
-		id = principal.getAccountId();
 
-		auditor = this.repository.findOneAuditorByUserId(id);
-
-		return auditor == null;
+		return !principal.hasRole(Auditor.class);
 	}
 
 	@Override
@@ -63,22 +58,35 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "description", "firm", "respStatement");
-
+		request.unbind(entity, model, "description", "firm", "respStatement", "hasRequest", "auditorInDatabase");
 	}
 
 	@Override
 	public Auditorrequest instantiate(final Request<Auditorrequest> request) {
 		assert request != null;
 
+		boolean isAuditor;
 		Date now;
 		Auditorrequest result;
-
+		Auditor auditor;
 		result = new Auditorrequest();
 		result.setStatus("pending");
 
 		now = new Date(System.currentTimeMillis() - 1);
 		result.setMoment(now);
+		Principal principal = request.getPrincipal();
+		int id = principal.getAccountId();
+		Authenticated user = this.repository.findOneUserAccountById(id);
+
+		result.setUser(user);
+
+		auditor = this.repository.findOneAuditorByUserId(principal.getAccountId());
+		isAuditor = auditor == null;
+		if (isAuditor) {
+			result.setAuditorInDatabase(false);
+		} else {
+			result.setAuditorInDatabase(true);
+		}
 
 		return result;
 	}
@@ -89,7 +97,7 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		assert entity != null;
 		assert errors != null;
 
-		boolean hasDescription, hasSpamDescription, hasFirm, hasSpamFirm, hasRepStatement, hasSpamStatement, canRequest;
+		boolean hasDescription, isAuditor, hasSpamDescription, hasFirm, hasSpamFirm, hasRepStatement, hasSpamStatement, canRequest;
 		Principal principal;
 		Configuration configuration;
 		String spamWords;
@@ -97,58 +105,66 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		Authenticated user;
 		Collection<Auditorrequest> requests;
 		Integer id;
+		Auditor auditor;
 
 		principal = request.getPrincipal();
 		id = principal.getAccountId();
 		user = this.repository.findOneUserAccountById(id);
 
-		if (this.repository.allRequestByUserAccountId(user.getId()) == null) {
-			requests = new ArrayList<Auditorrequest>();
-		} else {
-			requests = this.repository.allRequestByUserAccountId(user.getId());
+		auditor = this.repository.findOneAuditorByUserId(principal.getAccountId());
+		isAuditor = auditor == null;
+		errors.state(request, isAuditor, "firm", "authenticated.auditorrequest.error.you-are-auditor");
+
+		if (isAuditor) {
+
+			if (this.repository.allRequestByUserAccountId(user.getId()) == null) {
+				requests = new ArrayList<Auditorrequest>();
+			} else {
+				requests = this.repository.allRequestByUserAccountId(user.getId());
+			}
+
+			canRequest = requests.isEmpty();
+			errors.state(request, canRequest, "firm", "authenticated.auditorrequest.error.cannot-request");
+
+			if (canRequest) {
+
+				configuration = this.configurationRepository.findConfiguration();
+
+				spamWords = configuration.getSpamWords();
+				spamThreshold = configuration.getSpamThreshold();
+
+				hasDescription = entity.getDescription() != null && !entity.getDescription().isEmpty();
+				errors.state(request, hasDescription, "description", "authenticated.auditorrequest.error.must-have-description");
+
+				if (hasDescription) {
+
+					hasSpamDescription = Spamfilter.spamThreshold(entity.getDescription(), spamWords, spamThreshold);
+					errors.state(request, !hasSpamDescription, "description", "authenticated.auditorrequest.error.must-not-have-spam-description");
+				}
+
+				hasFirm = entity.getFirm() != null && !entity.getFirm().isEmpty();
+				errors.state(request, hasDescription, "firm", "authenticated.auditorrequest.error.must-have-firm");
+
+				if (hasFirm) {
+
+					hasSpamFirm = Spamfilter.spamThreshold(entity.getFirm(), spamWords, spamThreshold);
+					errors.state(request, !hasSpamFirm, "firm", "authenticated.auditorrequest.error.must-not-have-spam-firm");
+				}
+
+				hasRepStatement = entity.getRespStatement() != null && !entity.getRespStatement().isEmpty();
+				errors.state(request, hasRepStatement, "respStatement", "authenticated.auditorrequest.error.must-have-respStatement");
+
+				if (hasRepStatement) {
+
+					hasSpamStatement = Spamfilter.spamThreshold(entity.getRespStatement(), spamWords, spamThreshold);
+					errors.state(request, !hasSpamStatement, "respStatement", "authenticated.auditorrequest.error.must-not-have-spam-respStatement");
+				}
+			}
+
+			boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
+			errors.state(request, ErrorPattern, "status", "authenticated.auditorrequest.error.pattern-status");
+
 		}
-
-		canRequest = requests.isEmpty();
-		errors.state(request, canRequest, "firm", "authenticated.auditorrequest.error.cannot-request");
-
-		if (canRequest) {
-
-			configuration = this.configurationRepository.findConfiguration();
-
-			spamWords = configuration.getSpamWords();
-			spamThreshold = configuration.getSpamThreshold();
-
-			hasDescription = entity.getDescription() != null && !entity.getDescription().isEmpty();
-			errors.state(request, hasDescription, "description", "authenticated.auditorrequest.error.must-have-description");
-
-			if (hasDescription) {
-
-				hasSpamDescription = Spamfilter.spamThreshold(entity.getDescription(), spamWords, spamThreshold);
-				errors.state(request, !hasSpamDescription, "description", "authenticated.auditorrequest.error.must-not-have-spam-description");
-			}
-
-			hasFirm = entity.getFirm() != null && !entity.getFirm().isEmpty();
-			errors.state(request, hasDescription, "firm", "authenticated.auditorrequest.error.must-have-firm");
-
-			if (hasFirm) {
-
-				hasSpamFirm = Spamfilter.spamThreshold(entity.getFirm(), spamWords, spamThreshold);
-				errors.state(request, !hasSpamFirm, "firm", "authenticated.auditorrequest.error.must-not-have-spam-firm");
-			}
-
-			hasRepStatement = entity.getRespStatement() != null && !entity.getRespStatement().isEmpty();
-			errors.state(request, hasRepStatement, "respStatement", "authenticated.auditorrequest.error.must-have-respStatement");
-
-			if (hasRepStatement) {
-
-				hasSpamStatement = Spamfilter.spamThreshold(entity.getRespStatement(), spamWords, spamThreshold);
-				errors.state(request, !hasSpamStatement, "respStatement", "authenticated.auditorrequest.error.must-not-have-spam-respStatement");
-			}
-		}
-
-		boolean ErrorPattern = entity.getStatus().matches("^(pending)|(accepted)|(rejected)$");
-		errors.state(request, ErrorPattern, "status", "authenticated.auditorrequest.error.pattern-status");
-
 	}
 
 	@Override
@@ -166,6 +182,9 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		now = new Date(System.currentTimeMillis() - 1);
 
 		user = this.repository.findOneUserAccountById(id);
+
+		user.setHasAuditorRequest(true);
+		this.repository.save(user);
 
 		entity.setUser(user);
 		entity.setStatus("pending");

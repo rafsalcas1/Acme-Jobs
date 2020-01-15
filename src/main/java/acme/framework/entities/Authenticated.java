@@ -27,6 +27,7 @@ public class Authenticated extends UserRole {
 	private static final long serialVersionUID = 1L;
 
 	// Attributes -------------------------------------------------------------
+	private Boolean hasAuditorRequest;
 
 	// Derived attributes -----------------------------------------------------
 

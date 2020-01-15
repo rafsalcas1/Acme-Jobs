@@ -4,6 +4,12 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
+	<jstl:if test="${auditorInDatabase == true}">
+	<h4><acme:message code="authenticated.auditorrequest.error.you-are-auditor"/></h4>
+	</jstl:if>
+	
+	<jstl:if test="${auditorInDatabase == false}">
+	<jstl:if test="${hasRequest != true}">
 	
 	<acme:form-textbox code="authenticated.auditorrequest.form.label.firm" path="firm"/>
 	<acme:form-textarea code="authenticated.auditorrequest.form.label.respStatement" path="respStatement"/>
@@ -12,4 +18,11 @@
 	
 	<acme:form-submit test ="${command == 'create'}" code="authenticated.auditorrequest.form.button.create" action="/authenticated/auditorrequest/create"/>
 	<acme:form-return code="authenticated.auditorrequest.form.label.button.return"/>
+	</jstl:if>
+	<jstl:if test="${hasRequest == true}">
+	<h4><acme:message code="authenticated.auditorrequest.hasrequest"/></h4>
+	<acme:form-return code="authenticated.auditorrequest.form.label.button.return"/>
+	</jstl:if>
+	</jstl:if>
+	
 </acme:form>

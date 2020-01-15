@@ -364,10 +364,16 @@ at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil
 at javax.el.BeanELResolver$BeanProperties.get(BeanELResolver.java:260): Property [banner] not found on type [acme.entities.noncomercialbanner.Noncomercialbanner]
 ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-jobs/META-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
-ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.AssertionError
-ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP POST /acme-jobs/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:703): Invalid property 'hasRequest' of bean class [acme.entities.auditorrequest.Auditorrequest]: Getter for property 'hasRequest' threw exception; nested exception is java.lang.reflect.InvocationTargetException
+java.lang.reflect.InvocationTargetExceptionjava.lang.NullPointerException
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-jobs/META-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
-ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.AssertionError
-ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP POST /acme-jobs/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:703): Invalid property 'hasRequest' of bean class [acme.entities.auditorrequest.Auditorrequest]: Getter for property 'hasRequest' threw exception; nested exception is java.lang.reflect.InvocationTargetException
+java.lang.reflect.InvocationTargetExceptionjava.lang.NullPointerException
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-jobs/META-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
-ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: java.lang.NumberFormatException.forInputString(Unknown Source): For input string: "2045&"
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:40): Access is not authorised
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] HTTP GET /acme-jobs/META-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.META_002dINF.views.framework.panic_jsp] Exception: org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:703): Invalid property 'hasRequest' of bean class [acme.entities.auditorrequest.Auditorrequest]: Getter for property 'hasRequest' threw exception; nested exception is java.lang.reflect.InvocationTargetException
+java.lang.reflect.InvocationTargetExceptionjava.lang.NullPointerException

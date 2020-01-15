@@ -50,6 +50,7 @@
     create table `auditorrequest` (
        `id` integer not null,
         `version` integer not null,
+        `auditor_in_database` bit not null,
         `description` varchar(1024),
         `firm` varchar(255),
         `moment` datetime(6),
@@ -75,6 +76,7 @@
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
+        `has_auditor_request` bit,
         primary key (`id`)
     ) engine=InnoDB;
 
