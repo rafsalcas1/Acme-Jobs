@@ -75,6 +75,7 @@
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
+        `has_auditor_request` bit,
         primary key (`id`)
     ) engine=InnoDB;
 

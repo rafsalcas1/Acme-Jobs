@@ -418,6 +418,7 @@
 	
 	<bean name="worker1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="worker1UserAccount" />
+		<property name="hasAuditorRequest" value="true" />
 	</bean>
 	
 	

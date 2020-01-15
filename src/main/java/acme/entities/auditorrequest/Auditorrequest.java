@@ -59,4 +59,10 @@ public class Auditorrequest extends DomainEntity {
 	public String getUsername() {
 		return this.user.getUserAccount().getUsername();
 	}
+
+	@Transient
+	public Boolean getHasRequest() {
+		return this.user.getHasAuditorRequest();
+	}
+
 }

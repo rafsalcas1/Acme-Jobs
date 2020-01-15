@@ -92,12 +92,12 @@ public class AdministratorAuditorrequestUpdateService implements AbstractUpdateS
 		assert request != null;
 		assert entity != null;
 
+		Authenticated user;
+		user = entity.getUser();
+
 		if (entity.getStatus().equals("accepted")) {
 
 			Auditor auditor;
-			Authenticated user;
-
-			user = entity.getUser();
 
 			auditor = new Auditor();
 			auditor.setFirm(entity.getFirm());
@@ -108,7 +108,8 @@ public class AdministratorAuditorrequestUpdateService implements AbstractUpdateS
 			this.repository.save(auditor);
 
 		}
-
+		user.setHasAuditorRequest(false);
+		this.repository.save(user);
 		this.repository.save(entity);
 
 	}

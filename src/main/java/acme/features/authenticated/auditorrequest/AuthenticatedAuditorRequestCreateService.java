@@ -37,15 +37,10 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 	public boolean authorise(final Request<Auditorrequest> request) {
 		assert request != null;
 		Principal principal;
-		Integer id;
-		Auditor auditor;
 
 		principal = request.getPrincipal();
-		id = principal.getAccountId();
 
-		auditor = this.repository.findOneAuditorByUserId(id);
-
-		return auditor == null;
+		return !principal.hasRole(Auditor.class);
 	}
 
 	@Override
@@ -63,8 +58,7 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "description", "firm", "respStatement");
-
+		request.unbind(entity, model, "description", "firm", "respStatement", "hasRequest");
 	}
 
 	@Override
@@ -79,6 +73,11 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 
 		now = new Date(System.currentTimeMillis() - 1);
 		result.setMoment(now);
+		Principal principal = request.getPrincipal();
+		int id = principal.getAccountId();
+		Authenticated user = this.repository.findOneUserAccountById(id);
+
+		result.setUser(user);
 
 		return result;
 	}
@@ -166,6 +165,9 @@ public class AuthenticatedAuditorRequestCreateService implements AbstractCreateS
 		now = new Date(System.currentTimeMillis() - 1);
 
 		user = this.repository.findOneUserAccountById(id);
+
+		user.setHasAuditorRequest(true);
+		this.repository.save(user);
 
 		entity.setUser(user);
 		entity.setStatus("pending");
