@@ -36,3 +36,5 @@ sponsor.comercialbanner.error.must-have-surname = La tarjeta de credito debe de 
 sponsor.comercialbanner.error.must-have-securityCode = La tarjeta de credito debe de tener el codigo de seguridad
 sponsor.comercialbanner.error.pattern-securityCode= El codigo de seguridad deben de ser 3 números
 sponsor.comercialbanner.error.pattern-type = El tipo de la tarjeta de crédito debe ser Dinners Club, Visa, Master Card o American Express
+sponsor.comercialbanner.error.expiration-pattern = La fecha de caducidad debe ser de la forma "XX/YY"
+sponsor.comercialbanner.error.month-00 = El mes no puede ser "00"

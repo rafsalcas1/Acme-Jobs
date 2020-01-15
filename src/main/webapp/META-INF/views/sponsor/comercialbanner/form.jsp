@@ -43,7 +43,7 @@
 	<acme:form-textbox code="sponsor.comercialbanner.form.label.creditNumber" path="creditNumber"/>
 	<acme:form-textbox code="sponsor.comercialbanner.form.label.name" path="name"/>
 	<acme:form-textbox code="sponsor.comercialbanner.form.label.surname" path="surname"/>
-	<acme:form-textbox code="sponsor.comercialbanner.form.label.expiration" path="creditExp" placeholder="06/2023"/>
+	<acme:form-textbox code="sponsor.comercialbanner.form.label.expiration" path="creditExp" placeholder="06/23"/>
 	<acme:form-textbox code="sponsor.comercialbanner.form.label.securityCode" path="securityCode"/>
 	
 	<acme:form-select code="sponsor.comercialbanner.form.label.type" path="type">

@@ -118,13 +118,26 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 			hasExpiration = request.getModel().getString("creditExp") != null;
 			errors.state(request, hasExpiration, "creditExp", "sponsor.comercialbanner.error.must-have-expiration");
 			if (hasExpiration) {
-				Calendar date = Calendar.getInstance();
-				String fecha = request.getModel().getString("creditExp");
-				String[] sa = fecha.split("/");
-				date.set(Calendar.MONTH, Integer.valueOf(sa[0].trim()));
-				date.set(Calendar.YEAR, Integer.valueOf(sa[1].trim()));
-				isFuture = now.before(date.getTime());
-				errors.state(request, isFuture, "creditExp", "sponsor.comercialbanner.error.expirated");
+				String creditExp = request.getModel().getString("creditExp");
+				String start = creditExp.substring(0, 2);
+				boolean start00 = start.equals("00");
+				errors.state(request, !start00, "creditExp", "sponsor.comercialbanner.error.month-00");
+				if (!start00) {
+					boolean valid = creditExp.matches("^[0-9]{2}[/][0-9]{2}$");
+					errors.state(request, valid, "creditExp", "sponsor.comercialbanner.error.expiration-pattern");
+					if (valid) {
+						Calendar date = Calendar.getInstance();
+						String fecha = request.getModel().getString("creditExp");
+						String[] sa = fecha.split("/");
+						int year = Integer.valueOf("20" + sa[1].trim());
+						int month = Integer.valueOf(sa[0].trim());
+						date.set(Calendar.MONTH, month);
+						date.set(Calendar.YEAR, year);
+						date.set(Calendar.DAY_OF_MONTH, 1);
+						isFuture = now.before(date.getTime());
+						errors.state(request, isFuture, "creditExp", "sponsor.comercialbanner.error.expirated");
+					}
+				}
 			}
 		}
 
@@ -170,7 +183,8 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 			String fecha = request.getModel().getString("creditExp");
 			String[] sa = fecha.split("/");
 			date.set(Calendar.MONTH, Integer.valueOf(sa[0].trim()));
-			date.set(Calendar.YEAR, Integer.valueOf(sa[1].trim()));
+			date.set(Calendar.YEAR, Integer.valueOf("20" + sa[1].trim()));
+			date.set(Calendar.DAY_OF_MONTH, 1);
 			entity.setExpiration(date.getTime());
 		}
 
