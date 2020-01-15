@@ -68,7 +68,7 @@ public class SponsorComercialbannerUpdateService implements AbstractUpdateServic
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "urlPicture", "slogan", "urlTarget", "finalMode", "creditNumber", "name", "surname", "expiration", "securityCode", "type");
+		request.unbind(entity, model, "urlPicture", "slogan", "urlTarget", "finalMode", "creditNumber", "name", "surname", "creditExp", "securityCode", "type");
 
 	}
 
@@ -119,52 +119,67 @@ public class SponsorComercialbannerUpdateService implements AbstractUpdateServic
 
 		// Expiration validation ------------------------------------------------------------------------------------
 
-		if (!errors.hasErrors("expiration")) {
-			hasExpiration = entity.getExpiration() != null;
-			errors.state(request, hasExpiration, "expiration", "sponsor.comercialbanner.error.must-have-expiration");
-			if (hasExpiration) {
-				isFuture = now.before(entity.getExpiration());
-				errors.state(request, isFuture, "expiration", "sponsor.comercialbanner.error.expirated");
-			}
+		/*
+		 * if (!errors.hasErrors("creditExp")) {
+		 * hasExpiration = entity.getExpiration() != null;
+		 * errors.state(request, hasExpiration, "creditExp", "sponsor.comercialbanner.error.must-have-expiration");
+		 * if (hasExpiration) {
+		 * Calendar date = Calendar.getInstance();
+		 * String fecha = request.getModel().getString("creditExp");
+		 * String[] sa = fecha.split("/");
+		 * date.add(Calendar.DAY_OF_MONTH, Integer.valueOf(sa[0].trim()));
+		 * date.add(Calendar.YEAR, Integer.valueOf(sa[1].trim()));
+		 * isFuture = now.before(date.getTime());
+		 * errors.state(request, isFuture, "creditExp", "sponsor.comercialbanner.error.expirated");
+		 * }
+		 * }
+		 */
 
-			// Number validation ----------------------------------------------------------------------------------------
+		// Number validation ----------------------------------------------------------------------------------------
 
-			if (!errors.hasErrors("creditNumber")) {
-				hasNumber = entity.getCreditNumber() != null;
-				errors.state(request, hasNumber, "creditNumber", "sponsor.comercialbanner.error.must-have-creditNumber");
-			}
-			// Name validation ------------------------------------------------------------------------------------------
-
-			if (!errors.hasErrors("name")) {
-				hasNameOwner = entity.getName() != null;
-				errors.state(request, hasNameOwner, "name", "sponsor.comercialbanner.error.must-have-name");
-			}
-
-			// Surname validation ---------------------------------------------------------------------------------------
-
-			if (!errors.hasErrors("surname")) {
-				hasSurname = entity.getSurname() != null;
-				errors.state(request, hasSurname, "surname", "sponsor.comercialbanner.error.must-have-surname");
-			}
-
-			// Security code validation ----------------------------------------------------------------------------------
-
-			if (!errors.hasErrors("securityCode")) {
-				hasSecurityCode = entity.getSecurityCode() != null;
-				errors.state(request, hasSecurityCode, "securityCode", "sponsor.comercialbanner.error.must-have-securityCode");
-			}
-			boolean hasSecurityCodeP = entity.getSecurityCode().matches("^[0-9]{3}$");
-			errors.state(request, hasSecurityCodeP, "securityCode", "sponsor.comercialbanner.error.pattern-securityCode");
-			boolean ErrorPatterntype = entity.getType().matches("^(Dinners Club)|(Visa)|(Master Card)|(American Express)$");
-			errors.state(request, ErrorPatterntype, "type", "sponsor.comercialbanner.error.pattern-type");
-
+		if (!errors.hasErrors("creditNumber")) {
+			hasNumber = entity.getCreditNumber() != null;
+			errors.state(request, hasNumber, "creditNumber", "sponsor.comercialbanner.error.must-have-creditNumber");
 		}
+		// Name validation ------------------------------------------------------------------------------------------
+
+		if (!errors.hasErrors("name")) {
+			hasNameOwner = entity.getName() != null;
+			errors.state(request, hasNameOwner, "name", "sponsor.comercialbanner.error.must-have-name");
+		}
+
+		// Surname validation ---------------------------------------------------------------------------------------
+
+		if (!errors.hasErrors("surname")) {
+			hasSurname = entity.getSurname() != null;
+			errors.state(request, hasSurname, "surname", "sponsor.comercialbanner.error.must-have-surname");
+		}
+
+		// Security code validation ----------------------------------------------------------------------------------
+
+		if (!errors.hasErrors("securityCode")) {
+			hasSecurityCode = entity.getSecurityCode() != null;
+			errors.state(request, hasSecurityCode, "securityCode", "sponsor.comercialbanner.error.must-have-securityCode");
+		}
+		boolean hasSecurityCodeP = entity.getSecurityCode().matches("^[0-9]{3}$");
+		errors.state(request, hasSecurityCodeP, "securityCode", "sponsor.comercialbanner.error.pattern-securityCode");
+		boolean ErrorPatterntype = entity.getType().matches("^(Dinners Club)|(Visa)|(Master Card)|(American Express)$");
+		errors.state(request, ErrorPatterntype, "type", "sponsor.comercialbanner.error.pattern-type");
+
 	}
 
 	@Override
 	public void update(final Request<Comercialbanner> request, final Comercialbanner entity) {
 		assert request != null;
 		assert entity != null;
+		/*
+		 * Calendar date = Calendar.getInstance();
+		 * String fecha = request.getModel().getString("creditExp");
+		 * String[] sa = fecha.split("/");
+		 * date.add(Calendar.DAY_OF_MONTH, Integer.valueOf(sa[0].trim()));
+		 * date.add(Calendar.YEAR, Integer.valueOf(sa[1].trim()));
+		 * entity.setExpiration(date.getTime());
+		 */
 
 		this.repository.save(entity);
 

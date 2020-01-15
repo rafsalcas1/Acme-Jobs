@@ -1,6 +1,7 @@
 
 package acme.features.sponsor.comercialbanner;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors);
+		request.bind(entity, errors, "expiration");
 
 	}
 
@@ -53,7 +54,7 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "urlPicture", "slogan", "urlTarget", "finalMode", "creditNumber", "name", "surname", "expiration", "securityCode", "type");
+		request.unbind(entity, model, "urlPicture", "slogan", "urlTarget", "finalMode", "creditNumber", "name", "surname", "securityCode", "type");
 
 	}
 
@@ -65,6 +66,7 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 		Principal principal;
 		Comercialbanner result;
 		int principalId;
+		Date expiration = new Date();
 
 		principal = request.getPrincipal();
 		principalId = principal.getAccountId();
@@ -74,6 +76,7 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 		result = new Comercialbanner();
 		result.setFinalMode(false);
 		result.setSponsor(sponsor);
+		result.setExpiration(expiration);
 		return result;
 	}
 
@@ -111,12 +114,30 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 
 		// Expiration validation ------------------------------------------------------------------------------------
 
-		if (!errors.hasErrors("expiration")) {
-			hasExpiration = entity.getExpiration() != null;
-			errors.state(request, hasExpiration, "expiration", "sponsor.comercialbanner.error.must-have-expiration");
+		if (!errors.hasErrors("creditExp")) {
+			hasExpiration = request.getModel().getString("creditExp") != null;
+			errors.state(request, hasExpiration, "creditExp", "sponsor.comercialbanner.error.must-have-expiration");
 			if (hasExpiration) {
-				isFuture = now.before(entity.getExpiration());
-				errors.state(request, isFuture, "expiration", "sponsor.comercialbanner.error.expirated");
+				String creditExp = request.getModel().getString("creditExp");
+				String start = creditExp.substring(0, 2);
+				boolean start00 = start.equals("00");
+				errors.state(request, !start00, "creditExp", "sponsor.comercialbanner.error.month-00");
+				if (!start00) {
+					boolean valid = creditExp.matches("^[0-9]{2}[/][0-9]{2}$");
+					errors.state(request, valid, "creditExp", "sponsor.comercialbanner.error.expiration-pattern");
+					if (valid) {
+						Calendar date = Calendar.getInstance();
+						String fecha = request.getModel().getString("creditExp");
+						String[] sa = fecha.split("/");
+						int year = Integer.valueOf("20" + sa[1].trim());
+						int month = Integer.valueOf(sa[0].trim());
+						date.set(Calendar.MONTH, month);
+						date.set(Calendar.YEAR, year);
+						date.set(Calendar.DAY_OF_MONTH, 1);
+						isFuture = now.before(date.getTime());
+						errors.state(request, isFuture, "creditExp", "sponsor.comercialbanner.error.expirated");
+					}
+				}
 			}
 		}
 
@@ -155,6 +176,17 @@ public class SponsorComercialbannerCreateService implements AbstractCreateServic
 	public void create(final Request<Comercialbanner> request, final Comercialbanner entity) {
 		assert request != null;
 		assert entity != null;
+
+		boolean hasExpiration = request.getModel().getString("creditExp") != null;
+		if (hasExpiration) {
+			Calendar date = Calendar.getInstance();
+			String fecha = request.getModel().getString("creditExp");
+			String[] sa = fecha.split("/");
+			date.set(Calendar.MONTH, Integer.valueOf(sa[0].trim()));
+			date.set(Calendar.YEAR, Integer.valueOf("20" + sa[1].trim()));
+			date.set(Calendar.DAY_OF_MONTH, 1);
+			entity.setExpiration(date.getTime());
+		}
 
 		this.repository.save(entity);
 

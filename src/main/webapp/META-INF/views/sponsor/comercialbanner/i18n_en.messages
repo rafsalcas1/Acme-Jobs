@@ -37,4 +37,5 @@ sponsor.comercialbanner.error.must-have-surname = The credit card must have the 
 sponsor.comercialbanner.error.must-have-securityCode = The credit card must have the security code
 sponsor.comercialbanner.error.pattern-securityCode = The security code of the credit card must be 3 numbers
 sponsor.comercialbanner.error.pattern-type = El tipo de la tarjeta de crédito debe ser Dinners Club, Visa, Master Card o American Express
-
+sponsor.comercialbanner.error.expiration-pattern = The expiration must fix the following pattern: "XX/YY"
+sponsor.comercialbanner.error.month-00 = Month must not be "00"
